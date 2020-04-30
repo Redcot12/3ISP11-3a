@@ -57,7 +57,7 @@ namespace _3ISP11_3a
             //ID.Content = context.user.Where(i => i.login == UserLoginClass.LoginUser).Select(i => i.lastName).FirstOrDefault();
 
             GridGame.ItemsSource = context.game.ToList();
-            //ListFriend.ItemsSource = context.FriendShip.ToList();
+           // ListFriend.ItemsSource = context.FriendShip.ToList();  --   старого представления надо заменить
         }
     }
 }

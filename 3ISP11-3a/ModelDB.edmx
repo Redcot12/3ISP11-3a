@@ -1,0 +1,1268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ageLimit">
+          <Key>
+            <PropertyRef Name="idAgeLimit" />
+          </Key>
+          <Property Name="idAgeLimit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ageLimit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="balance">
+          <Key>
+            <PropertyRef Name="idBalance" />
+          </Key>
+          <Property Name="idBalance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="accountBalance" Type="nchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="idCategory" />
+          </Key>
+          <Property Name="idCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoryGame">
+          <Key>
+            <PropertyRef Name="idCategoryGame" />
+          </Key>
+          <Property Name="idCategoryGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGame" Type="int" Nullable="false" />
+          <Property Name="idCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chatMessage">
+          <Key>
+            <PropertyRef Name="idMessage" />
+          </Key>
+          <Property Name="idMessage" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUserRoomChat" Type="int" Nullable="false" />
+          <Property Name="textMessage" Type="nvarchar(max)" />
+          <Property Name="dateMessage" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="idGame" />
+          </Key>
+          <Property Name="idGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameGame" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+          <Property Name="releaseDate" Type="date" />
+          <Property Name="logo" Type="nvarchar" MaxLength="255" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idAgeLimit" Type="int" />
+        </EntityType>
+        <EntityType Name="operationBalance">
+          <Key>
+            <PropertyRef Name="idOperation" />
+          </Key>
+          <Property Name="idOperation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idBalance" Type="int" Nullable="false" />
+          <Property Name="operation" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dateTimeOperation" Type="datetime" />
+        </EntityType>
+        <EntityType Name="parentControl">
+          <Key>
+            <PropertyRef Name="idParentControl" />
+          </Key>
+          <Property Name="idParentControl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUserParent" Type="int" Nullable="false" />
+          <Property Name="idUserChild" Type="int" Nullable="false" />
+          <Property Name="timeLimit" Type="time" Precision="2" />
+          <Property Name="confirmed" Type="bit" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="idRegion" />
+          </Key>
+          <Property Name="idRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="regionName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="coefficient" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="relationship">
+          <Key>
+            <PropertyRef Name="idRelationship" />
+          </Key>
+          <Property Name="idRelationship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUser1" Type="int" Nullable="false" />
+          <Property Name="idUser2" Type="int" Nullable="false" />
+          <Property Name="idStatusRelationship" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roomChat">
+          <Key>
+            <PropertyRef Name="idRoomChat" />
+          </Key>
+          <Property Name="idRoomChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameRoomChat" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statusGame">
+          <Key>
+            <PropertyRef Name="idStatusGame" />
+          </Key>
+          <Property Name="idStatusGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="statusGame" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="statusRelationship">
+          <Key>
+            <PropertyRef Name="idStatusRelationship" />
+          </Key>
+          <Property Name="idStatusRelationship" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="statusRelationShip" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="timePlayed">
+          <Key>
+            <PropertyRef Name="idTimePlayed" />
+          </Key>
+          <Property Name="idTimePlayed" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUserGame" Type="int" Nullable="false" />
+          <Property Name="timeStart" Type="datetime" Nullable="false" />
+          <Property Name="timeEnd" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="middleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idRegion" Type="int" />
+          <Property Name="birthdate" Type="date" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="avatar" Type="varbinary(max)" />
+          <Property Name="deletedDate" Type="datetime" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="userGame">
+          <Key>
+            <PropertyRef Name="idUserGame" />
+          </Key>
+          <Property Name="idUserGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGame" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="dateBuy" Type="datetime" />
+          <Property Name="priceBuy" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="idStatusGame" Type="int" />
+        </EntityType>
+        <EntityType Name="userRoomChat">
+          <Key>
+            <PropertyRef Name="idUserRoomChat" />
+          </Key>
+          <Property Name="idUserRoomChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRoomChat" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "1.dbo.userLab" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="userLab">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="lastName" />
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="nameGame" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="middleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="nameGame" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="dateBuy" Type="datetime" />
+          <Property Name="priceBuy" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "1.dbo.wallet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="wallet">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="accountBalance" />
+            <PropertyRef Name="operation" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="accountBalance" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="operation" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dateTimeOperation" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_balance_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="balance" Type="Self.balance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="balance">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoryGame_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="categoryGame" Type="Self.categoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="categoryGame">
+              <PropertyRef Name="idCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoryGame_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="categoryGame" Type="Self.categoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="idGame" />
+            </Principal>
+            <Dependent Role="categoryGame">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chatMessage_userRoomChat">
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="1" />
+          <End Role="chatMessage" Type="Self.chatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userRoomChat">
+              <PropertyRef Name="idUserRoomChat" />
+            </Principal>
+            <Dependent Role="chatMessage">
+              <PropertyRef Name="idUserRoomChat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_game_ageLimit">
+          <End Role="ageLimit" Type="Self.ageLimit" Multiplicity="0..1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ageLimit">
+              <PropertyRef Name="idAgeLimit" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="idAgeLimit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operationBalance_balance">
+          <End Role="balance" Type="Self.balance" Multiplicity="1" />
+          <End Role="operationBalance" Type="Self.operationBalance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balance">
+              <PropertyRef Name="idBalance" />
+            </Principal>
+            <Dependent Role="operationBalance">
+              <PropertyRef Name="idBalance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parentControl_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="parentControl" Type="Self.parentControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="parentControl">
+              <PropertyRef Name="idUserParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parentControl_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="parentControl" Type="Self.parentControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="parentControl">
+              <PropertyRef Name="idUserChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_statusRelationship">
+          <End Role="statusRelationship" Type="Self.statusRelationship" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusRelationship">
+              <PropertyRef Name="idStatusRelationship" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idStatusRelationship" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idUser1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idUser2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_timePlayed_userGame">
+          <End Role="userGame" Type="Self.userGame" Multiplicity="1" />
+          <End Role="timePlayed" Type="Self.timePlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userGame">
+              <PropertyRef Name="idUserGame" />
+            </Principal>
+            <Dependent Role="timePlayed">
+              <PropertyRef Name="idUserGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_region">
+          <End Role="region" Type="Self.region" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="idRegion" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="idGame" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_statusGame">
+          <End Role="statusGame" Type="Self.statusGame" Multiplicity="0..1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusGame">
+              <PropertyRef Name="idStatusGame" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idStatusGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRoomChat_roomChat">
+          <End Role="roomChat" Type="Self.roomChat" Multiplicity="1" />
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomChat">
+              <PropertyRef Name="idRoomChat" />
+            </Principal>
+            <Dependent Role="userRoomChat">
+              <PropertyRef Name="idRoomChat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRoomChat_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userRoomChat">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="ageLimit" EntityType="Self.ageLimit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="balance" EntityType="Self.balance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoryGame" EntityType="Self.categoryGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chatMessage" EntityType="Self.chatMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="game" EntityType="Self.game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operationBalance" EntityType="Self.operationBalance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parentControl" EntityType="Self.parentControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="region" EntityType="Self.region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="relationship" EntityType="Self.relationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomChat" EntityType="Self.roomChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusGame" EntityType="Self.statusGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statusRelationship" EntityType="Self.statusRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="timePlayed" EntityType="Self.timePlayed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userGame" EntityType="Self.userGame" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userRoomChat" EntityType="Self.userRoomChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userLab" EntityType="Self.userLab" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [userLab].[login] AS [login], 
+    [userLab].[lastName] AS [lastName], 
+    [userLab].[firstName] AS [firstName], 
+    [userLab].[middleName] AS [middleName], 
+    [userLab].[nameGame] AS [nameGame], 
+    [userLab].[dateBuy] AS [dateBuy], 
+    [userLab].[priceBuy] AS [priceBuy]
+    FROM [dbo].[userLab] AS [userLab]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="wallet" EntityType="Self.wallet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [wallet].[login] AS [login], 
+    [wallet].[accountBalance] AS [accountBalance], 
+    [wallet].[operation] AS [operation], 
+    [wallet].[dateTimeOperation] AS [dateTimeOperation]
+    FROM [dbo].[wallet] AS [wallet]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_balance_user" Association="Self.FK_balance_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="balance" EntitySet="balance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoryGame_category" Association="Self.FK_categoryGame_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="categoryGame" EntitySet="categoryGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoryGame_game" Association="Self.FK_categoryGame_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="categoryGame" EntitySet="categoryGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chatMessage_userRoomChat" Association="Self.FK_chatMessage_userRoomChat">
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+            <End Role="chatMessage" EntitySet="chatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_game_ageLimit" Association="Self.FK_game_ageLimit">
+            <End Role="ageLimit" EntitySet="ageLimit" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operationBalance_balance" Association="Self.FK_operationBalance_balance">
+            <End Role="balance" EntitySet="balance" />
+            <End Role="operationBalance" EntitySet="operationBalance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parentControl_user" Association="Self.FK_parentControl_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="parentControl" EntitySet="parentControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parentControl_user1" Association="Self.FK_parentControl_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="parentControl" EntitySet="parentControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_statusRelationship" Association="Self.FK_relationship_statusRelationship">
+            <End Role="statusRelationship" EntitySet="statusRelationship" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_user" Association="Self.FK_relationship_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_user1" Association="Self.FK_relationship_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_timePlayed_userGame" Association="Self.FK_timePlayed_userGame">
+            <End Role="userGame" EntitySet="userGame" />
+            <End Role="timePlayed" EntitySet="timePlayed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_region" Association="Self.FK_user_region">
+            <End Role="region" EntitySet="region" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_game" Association="Self.FK_userGame_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_statusGame" Association="Self.FK_userGame_statusGame">
+            <End Role="statusGame" EntitySet="statusGame" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_user" Association="Self.FK_userGame_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRoomChat_roomChat" Association="Self.FK_userRoomChat_roomChat">
+            <End Role="roomChat" EntitySet="roomChat" />
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRoomChat_user" Association="Self.FK_userRoomChat_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ageLimit">
+          <Key>
+            <PropertyRef Name="idAgeLimit" />
+          </Key>
+          <Property Name="idAgeLimit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ageLimit1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="game" Relationship="Self.FK_game_ageLimit" FromRole="ageLimit" ToRole="game" />
+        </EntityType>
+        <EntityType Name="balance">
+          <Key>
+            <PropertyRef Name="idBalance" />
+          </Key>
+          <Property Name="idBalance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="accountBalance" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_balance_user" FromRole="balance" ToRole="user" />
+          <NavigationProperty Name="operationBalance" Relationship="Self.FK_operationBalance_balance" FromRole="balance" ToRole="operationBalance" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="idCategory" />
+          </Key>
+          <Property Name="idCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="categoryGame" Relationship="Self.FK_categoryGame_category" FromRole="category" ToRole="categoryGame" />
+        </EntityType>
+        <EntityType Name="categoryGame">
+          <Key>
+            <PropertyRef Name="idCategoryGame" />
+          </Key>
+          <Property Name="idCategoryGame" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGame" Type="Int32" Nullable="false" />
+          <Property Name="idCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="category" Relationship="Self.FK_categoryGame_category" FromRole="categoryGame" ToRole="category" />
+          <NavigationProperty Name="game" Relationship="Self.FK_categoryGame_game" FromRole="categoryGame" ToRole="game" />
+        </EntityType>
+        <EntityType Name="chatMessage">
+          <Key>
+            <PropertyRef Name="idMessage" />
+          </Key>
+          <Property Name="idMessage" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUserRoomChat" Type="Int32" Nullable="false" />
+          <Property Name="textMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateMessage" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userRoomChat" Relationship="Self.FK_chatMessage_userRoomChat" FromRole="chatMessage" ToRole="userRoomChat" />
+        </EntityType>
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="idGame" />
+          </Key>
+          <Property Name="idGame" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameGame" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="releaseDate" Type="DateTime" Precision="0" />
+          <Property Name="logo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idAgeLimit" Type="Int32" />
+          <NavigationProperty Name="ageLimit" Relationship="Self.FK_game_ageLimit" FromRole="game" ToRole="ageLimit" />
+          <NavigationProperty Name="categoryGame" Relationship="Self.FK_categoryGame_game" FromRole="game" ToRole="categoryGame" />
+          <NavigationProperty Name="userGame" Relationship="Self.FK_userGame_game" FromRole="game" ToRole="userGame" />
+        </EntityType>
+        <EntityType Name="operationBalance">
+          <Key>
+            <PropertyRef Name="idOperation" />
+          </Key>
+          <Property Name="idOperation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idBalance" Type="Int32" Nullable="false" />
+          <Property Name="operation" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dateTimeOperation" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="balance" Relationship="Self.FK_operationBalance_balance" FromRole="operationBalance" ToRole="balance" />
+        </EntityType>
+        <EntityType Name="parentControl">
+          <Key>
+            <PropertyRef Name="idParentControl" />
+          </Key>
+          <Property Name="idParentControl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUserParent" Type="Int32" Nullable="false" />
+          <Property Name="idUserChild" Type="Int32" Nullable="false" />
+          <Property Name="timeLimit" Type="Time" Precision="2" />
+          <Property Name="confirmed" Type="Boolean" />
+          <NavigationProperty Name="user" Relationship="Self.FK_parentControl_user" FromRole="parentControl" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_parentControl_user1" FromRole="parentControl" ToRole="user" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="idRegion" />
+          </Key>
+          <Property Name="idRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="regionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="coefficient" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_region" FromRole="region" ToRole="user" />
+        </EntityType>
+        <EntityType Name="relationship">
+          <Key>
+            <PropertyRef Name="idRelationship" />
+          </Key>
+          <Property Name="idRelationship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUser1" Type="Int32" Nullable="false" />
+          <Property Name="idUser2" Type="Int32" Nullable="false" />
+          <Property Name="idStatusRelationship" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="statusRelationship" Relationship="Self.FK_relationship_statusRelationship" FromRole="relationship" ToRole="statusRelationship" />
+          <NavigationProperty Name="user" Relationship="Self.FK_relationship_user" FromRole="relationship" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_relationship_user1" FromRole="relationship" ToRole="user" />
+        </EntityType>
+        <EntityType Name="roomChat">
+          <Key>
+            <PropertyRef Name="idRoomChat" />
+          </Key>
+          <Property Name="idRoomChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameRoomChat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="userRoomChat" Relationship="Self.FK_userRoomChat_roomChat" FromRole="roomChat" ToRole="userRoomChat" />
+        </EntityType>
+        <EntityType Name="statusGame">
+          <Key>
+            <PropertyRef Name="idStatusGame" />
+          </Key>
+          <Property Name="idStatusGame" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="statusGame1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="userGame" Relationship="Self.FK_userGame_statusGame" FromRole="statusGame" ToRole="userGame" />
+        </EntityType>
+        <EntityType Name="statusRelationship">
+          <Key>
+            <PropertyRef Name="idStatusRelationship" />
+          </Key>
+          <Property Name="idStatusRelationship" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="statusRelationShip1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="relationship" Relationship="Self.FK_relationship_statusRelationship" FromRole="statusRelationship" ToRole="relationship" />
+        </EntityType>
+        <EntityType Name="timePlayed">
+          <Key>
+            <PropertyRef Name="idTimePlayed" />
+          </Key>
+          <Property Name="idTimePlayed" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUserGame" Type="Int32" Nullable="false" />
+          <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userGame" Relationship="Self.FK_timePlayed_userGame" FromRole="timePlayed" ToRole="userGame" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="middleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idRegion" Type="Int32" />
+          <Property Name="birthdate" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="deletedDate" Type="DateTime" Precision="3" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="balance" Relationship="Self.FK_balance_user" FromRole="user" ToRole="balance" />
+          <NavigationProperty Name="parentControl" Relationship="Self.FK_parentControl_user" FromRole="user" ToRole="parentControl" />
+          <NavigationProperty Name="parentControl1" Relationship="Self.FK_parentControl_user1" FromRole="user" ToRole="parentControl" />
+          <NavigationProperty Name="region" Relationship="Self.FK_user_region" FromRole="user" ToRole="region" />
+          <NavigationProperty Name="relationship" Relationship="Self.FK_relationship_user" FromRole="user" ToRole="relationship" />
+          <NavigationProperty Name="relationship1" Relationship="Self.FK_relationship_user1" FromRole="user" ToRole="relationship" />
+          <NavigationProperty Name="userGame" Relationship="Self.FK_userGame_user" FromRole="user" ToRole="userGame" />
+          <NavigationProperty Name="userRoomChat" Relationship="Self.FK_userRoomChat_user" FromRole="user" ToRole="userRoomChat" />
+        </EntityType>
+        <EntityType Name="userGame">
+          <Key>
+            <PropertyRef Name="idUserGame" />
+          </Key>
+          <Property Name="idUserGame" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGame" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="dateBuy" Type="DateTime" Precision="3" />
+          <Property Name="priceBuy" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="idStatusGame" Type="Int32" />
+          <NavigationProperty Name="game" Relationship="Self.FK_userGame_game" FromRole="userGame" ToRole="game" />
+          <NavigationProperty Name="statusGame" Relationship="Self.FK_userGame_statusGame" FromRole="userGame" ToRole="statusGame" />
+          <NavigationProperty Name="timePlayed" Relationship="Self.FK_timePlayed_userGame" FromRole="userGame" ToRole="timePlayed" />
+          <NavigationProperty Name="user" Relationship="Self.FK_userGame_user" FromRole="userGame" ToRole="user" />
+        </EntityType>
+        <EntityType Name="userRoomChat">
+          <Key>
+            <PropertyRef Name="idUserRoomChat" />
+          </Key>
+          <Property Name="idUserRoomChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRoomChat" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="chatMessage" Relationship="Self.FK_chatMessage_userRoomChat" FromRole="userRoomChat" ToRole="chatMessage" />
+          <NavigationProperty Name="roomChat" Relationship="Self.FK_userRoomChat_roomChat" FromRole="userRoomChat" ToRole="roomChat" />
+          <NavigationProperty Name="user" Relationship="Self.FK_userRoomChat_user" FromRole="userRoomChat" ToRole="user" />
+        </EntityType>
+        <EntityType Name="userLab">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="lastName" />
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="nameGame" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="middleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nameGame" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateBuy" Type="DateTime" Precision="3" />
+          <Property Name="priceBuy" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="wallet">
+          <Key>
+            <PropertyRef Name="login" />
+            <PropertyRef Name="accountBalance" />
+            <PropertyRef Name="operation" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="accountBalance" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="operation" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="dateTimeOperation" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_game_ageLimit">
+          <End Role="ageLimit" Type="Self.ageLimit" Multiplicity="0..1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ageLimit">
+              <PropertyRef Name="idAgeLimit" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="idAgeLimit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_balance_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="balance" Type="Self.balance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="balance">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operationBalance_balance">
+          <End Role="balance" Type="Self.balance" Multiplicity="1" />
+          <End Role="operationBalance" Type="Self.operationBalance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="balance">
+              <PropertyRef Name="idBalance" />
+            </Principal>
+            <Dependent Role="operationBalance">
+              <PropertyRef Name="idBalance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoryGame_category">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="categoryGame" Type="Self.categoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="idCategory" />
+            </Principal>
+            <Dependent Role="categoryGame">
+              <PropertyRef Name="idCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_categoryGame_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="categoryGame" Type="Self.categoryGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="idGame" />
+            </Principal>
+            <Dependent Role="categoryGame">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chatMessage_userRoomChat">
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="1" />
+          <End Role="chatMessage" Type="Self.chatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userRoomChat">
+              <PropertyRef Name="idUserRoomChat" />
+            </Principal>
+            <Dependent Role="chatMessage">
+              <PropertyRef Name="idUserRoomChat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="idGame" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parentControl_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="parentControl" Type="Self.parentControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="parentControl">
+              <PropertyRef Name="idUserParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_parentControl_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="parentControl" Type="Self.parentControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="parentControl">
+              <PropertyRef Name="idUserChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_region">
+          <End Role="region" Type="Self.region" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="idRegion" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_statusRelationship">
+          <End Role="statusRelationship" Type="Self.statusRelationship" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusRelationship">
+              <PropertyRef Name="idStatusRelationship" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idStatusRelationship" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idUser1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_relationship_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="relationship" Type="Self.relationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="relationship">
+              <PropertyRef Name="idUser2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRoomChat_roomChat">
+          <End Role="roomChat" Type="Self.roomChat" Multiplicity="1" />
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roomChat">
+              <PropertyRef Name="idRoomChat" />
+            </Principal>
+            <Dependent Role="userRoomChat">
+              <PropertyRef Name="idRoomChat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_statusGame">
+          <End Role="statusGame" Type="Self.statusGame" Multiplicity="0..1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusGame">
+              <PropertyRef Name="idStatusGame" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idStatusGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_timePlayed_userGame">
+          <End Role="userGame" Type="Self.userGame" Multiplicity="1" />
+          <End Role="timePlayed" Type="Self.timePlayed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userGame">
+              <PropertyRef Name="idUserGame" />
+            </Principal>
+            <Dependent Role="timePlayed">
+              <PropertyRef Name="idUserGame" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userGame_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userGame" Type="Self.userGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userGame">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRoomChat_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userRoomChat" Type="Self.userRoomChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userRoomChat">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ageLimit" EntityType="Self.ageLimit" />
+          <EntitySet Name="balance" EntityType="Self.balance" />
+          <EntitySet Name="category" EntityType="Self.category" />
+          <EntitySet Name="categoryGame" EntityType="Self.categoryGame" />
+          <EntitySet Name="chatMessage" EntityType="Self.chatMessage" />
+          <EntitySet Name="game" EntityType="Self.game" />
+          <EntitySet Name="operationBalance" EntityType="Self.operationBalance" />
+          <EntitySet Name="parentControl" EntityType="Self.parentControl" />
+          <EntitySet Name="region" EntityType="Self.region" />
+          <EntitySet Name="relationship" EntityType="Self.relationship" />
+          <EntitySet Name="roomChat" EntityType="Self.roomChat" />
+          <EntitySet Name="statusGame" EntityType="Self.statusGame" />
+          <EntitySet Name="statusRelationship" EntityType="Self.statusRelationship" />
+          <EntitySet Name="timePlayed" EntityType="Self.timePlayed" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="userGame" EntityType="Self.userGame" />
+          <EntitySet Name="userRoomChat" EntityType="Self.userRoomChat" />
+          <EntitySet Name="userLab" EntityType="Self.userLab" />
+          <EntitySet Name="wallet" EntityType="Self.wallet" />
+          <AssociationSet Name="FK_game_ageLimit" Association="Self.FK_game_ageLimit">
+            <End Role="ageLimit" EntitySet="ageLimit" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="FK_balance_user" Association="Self.FK_balance_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="balance" EntitySet="balance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operationBalance_balance" Association="Self.FK_operationBalance_balance">
+            <End Role="balance" EntitySet="balance" />
+            <End Role="operationBalance" EntitySet="operationBalance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoryGame_category" Association="Self.FK_categoryGame_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="categoryGame" EntitySet="categoryGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_categoryGame_game" Association="Self.FK_categoryGame_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="categoryGame" EntitySet="categoryGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chatMessage_userRoomChat" Association="Self.FK_chatMessage_userRoomChat">
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+            <End Role="chatMessage" EntitySet="chatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_game" Association="Self.FK_userGame_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parentControl_user" Association="Self.FK_parentControl_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="parentControl" EntitySet="parentControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_parentControl_user1" Association="Self.FK_parentControl_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="parentControl" EntitySet="parentControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_region" Association="Self.FK_user_region">
+            <End Role="region" EntitySet="region" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_statusRelationship" Association="Self.FK_relationship_statusRelationship">
+            <End Role="statusRelationship" EntitySet="statusRelationship" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_user" Association="Self.FK_relationship_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_relationship_user1" Association="Self.FK_relationship_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="relationship" EntitySet="relationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRoomChat_roomChat" Association="Self.FK_userRoomChat_roomChat">
+            <End Role="roomChat" EntitySet="roomChat" />
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_statusGame" Association="Self.FK_userGame_statusGame">
+            <End Role="statusGame" EntitySet="statusGame" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_timePlayed_userGame" Association="Self.FK_timePlayed_userGame">
+            <End Role="userGame" EntitySet="userGame" />
+            <End Role="timePlayed" EntitySet="timePlayed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userGame_user" Association="Self.FK_userGame_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="userGame" EntitySet="userGame" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRoomChat_user" Association="Self.FK_userRoomChat_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="userRoomChat" EntitySet="userRoomChat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="ageLimit">
+            <EntityTypeMapping TypeName="Model.ageLimit">
+              <MappingFragment StoreEntitySet="ageLimit">
+                <ScalarProperty Name="idAgeLimit" ColumnName="idAgeLimit" />
+                <ScalarProperty Name="ageLimit1" ColumnName="ageLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="balance">
+            <EntityTypeMapping TypeName="Model.balance">
+              <MappingFragment StoreEntitySet="balance">
+                <ScalarProperty Name="idBalance" ColumnName="idBalance" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="Model.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+                <ScalarProperty Name="category1" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoryGame">
+            <EntityTypeMapping TypeName="Model.categoryGame">
+              <MappingFragment StoreEntitySet="categoryGame">
+                <ScalarProperty Name="idCategoryGame" ColumnName="idCategoryGame" />
+                <ScalarProperty Name="idGame" ColumnName="idGame" />
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chatMessage">
+            <EntityTypeMapping TypeName="Model.chatMessage">
+              <MappingFragment StoreEntitySet="chatMessage">
+                <ScalarProperty Name="idMessage" ColumnName="idMessage" />
+                <ScalarProperty Name="idUserRoomChat" ColumnName="idUserRoomChat" />
+                <ScalarProperty Name="textMessage" ColumnName="textMessage" />
+                <ScalarProperty Name="dateMessage" ColumnName="dateMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="game">
+            <EntityTypeMapping TypeName="Model.game">
+              <MappingFragment StoreEntitySet="game">
+                <ScalarProperty Name="idGame" ColumnName="idGame" />
+                <ScalarProperty Name="nameGame" ColumnName="nameGame" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="idAgeLimit" ColumnName="idAgeLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operationBalance">
+            <EntityTypeMapping TypeName="Model.operationBalance">
+              <MappingFragment StoreEntitySet="operationBalance">
+                <ScalarProperty Name="idOperation" ColumnName="idOperation" />
+                <ScalarProperty Name="idBalance" ColumnName="idBalance" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="dateTimeOperation" ColumnName="dateTimeOperation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parentControl">
+            <EntityTypeMapping TypeName="Model.parentControl">
+              <MappingFragment StoreEntitySet="parentControl">
+                <ScalarProperty Name="idParentControl" ColumnName="idParentControl" />
+                <ScalarProperty Name="idUserParent" ColumnName="idUserParent" />
+                <ScalarProperty Name="idUserChild" ColumnName="idUserChild" />
+                <ScalarProperty Name="timeLimit" ColumnName="timeLimit" />
+                <ScalarProperty Name="confirmed" ColumnName="confirmed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="region">
+            <EntityTypeMapping TypeName="Model.region">
+              <MappingFragment StoreEntitySet="region">
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="regionName" ColumnName="regionName" />
+                <ScalarProperty Name="coefficient" ColumnName="coefficient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="relationship">
+            <EntityTypeMapping TypeName="Model.relationship">
+              <MappingFragment StoreEntitySet="relationship">
+                <ScalarProperty Name="idRelationship" ColumnName="idRelationship" />
+                <ScalarProperty Name="idUser1" ColumnName="idUser1" />
+                <ScalarProperty Name="idUser2" ColumnName="idUser2" />
+                <ScalarProperty Name="idStatusRelationship" ColumnName="idStatusRelationship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomChat">
+            <EntityTypeMapping TypeName="Model.roomChat">
+              <MappingFragment StoreEntitySet="roomChat">
+                <ScalarProperty Name="idRoomChat" ColumnName="idRoomChat" />
+                <ScalarProperty Name="nameRoomChat" ColumnName="nameRoomChat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusGame">
+            <EntityTypeMapping TypeName="Model.statusGame">
+              <MappingFragment StoreEntitySet="statusGame">
+                <ScalarProperty Name="idStatusGame" ColumnName="idStatusGame" />
+                <ScalarProperty Name="statusGame1" ColumnName="statusGame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statusRelationship">
+            <EntityTypeMapping TypeName="Model.statusRelationship">
+              <MappingFragment StoreEntitySet="statusRelationship">
+                <ScalarProperty Name="idStatusRelationship" ColumnName="idStatusRelationship" />
+                <ScalarProperty Name="statusRelationShip1" ColumnName="statusRelationShip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="timePlayed">
+            <EntityTypeMapping TypeName="Model.timePlayed">
+              <MappingFragment StoreEntitySet="timePlayed">
+                <ScalarProperty Name="idTimePlayed" ColumnName="idTimePlayed" />
+                <ScalarProperty Name="idUserGame" ColumnName="idUserGame" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userGame">
+            <EntityTypeMapping TypeName="Model.userGame">
+              <MappingFragment StoreEntitySet="userGame">
+                <ScalarProperty Name="idUserGame" ColumnName="idUserGame" />
+                <ScalarProperty Name="idGame" ColumnName="idGame" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="dateBuy" ColumnName="dateBuy" />
+                <ScalarProperty Name="priceBuy" ColumnName="priceBuy" />
+                <ScalarProperty Name="idStatusGame" ColumnName="idStatusGame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userRoomChat">
+            <EntityTypeMapping TypeName="Model.userRoomChat">
+              <MappingFragment StoreEntitySet="userRoomChat">
+                <ScalarProperty Name="idUserRoomChat" ColumnName="idUserRoomChat" />
+                <ScalarProperty Name="idRoomChat" ColumnName="idRoomChat" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userLab">
+            <EntityTypeMapping TypeName="Model.userLab">
+              <MappingFragment StoreEntitySet="userLab">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="nameGame" ColumnName="nameGame" />
+                <ScalarProperty Name="dateBuy" ColumnName="dateBuy" />
+                <ScalarProperty Name="priceBuy" ColumnName="priceBuy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wallet">
+            <EntityTypeMapping TypeName="Model.wallet">
+              <MappingFragment StoreEntitySet="wallet">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="dateTimeOperation" ColumnName="dateTimeOperation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

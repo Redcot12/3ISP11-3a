@@ -1,0 +1,129 @@
+﻿<Window x:Class="_3ISP11_3a.Userwin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_3ISP11_3a"
+        mc:Ignorable="d"
+        Title="Userwin" Height="486" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="107"/>
+            <RowDefinition Height="216"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="535"/>
+            <ColumnDefinition Width="259"/>
+
+        </Grid.ColumnDefinitions>
+        <Border Background="#FFA3A4A3"
+                Grid.ColumnSpan="2"
+                BorderThickness="2"
+                BorderBrush="Black"/>
+
+        <Border Background="#FFA3A4A3"
+                Grid.ColumnSpan="1"
+                BorderBrush="Black"
+                BorderThickness="2"
+                Grid.Row="1"
+                Grid.Column="0"/>
+
+
+        <Border Background="#FFA3A4A3"
+                Grid.RowSpan="2"
+                BorderThickness="2"
+                BorderBrush="Black"
+                Grid.Row="1"
+                Grid.Column="1"/>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="20,20,0,64"
+                   x:Name="EditUserDate1">
+            <Hyperlink x:Name="Redprof" Click="Redprof_Click"
+                       >Редактировать профиль</Hyperlink>
+        </TextBlock>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="20,49,0,37"
+                   x:Name="ParentalControl">
+            <Hyperlink x:Name="ParCont" Click="ParCont_Click"
+                       >Родительский  контроль</Hyperlink>
+        </TextBlock>
+
+        <Image
+            Source="imj/Prof.jpg"
+            Grid.Row="1"
+            Margin="30,5,392,5"/>
+
+        <Label x:Name="LnameLB"
+               Grid.Row="1"
+               Content="1"
+               VerticalAlignment="Top"
+               Margin="148,7,97,0"
+               FontSize="20"/>
+
+        <Label x:Name="FnameLB"
+               Grid.Row="1"
+               Content="2"
+               VerticalAlignment="Center"
+               Margin="148,35,97,37"
+               FontSize="20"/>
+
+        <Label x:Name="MnameLB"
+               Grid.Row="1"
+               Content="3"
+               VerticalAlignment="Bottom"
+               Margin="148,0,97,10"
+               FontSize="20"/>
+
+        <Label x:Name="Shaprka"
+               Content="GameShop"
+               FontSize="14"
+               FontFamily="Showcard Gothic"
+               Background="{x:Null}" Margin="0,0,448,0"/>
+
+        <DataGrid x:Name="GridGame" 
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="Bisque" 
+                  Margin="0,0,0,-105">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Название игры"
+                    Width="350" 
+                    Binding="{Binding nameGame}" 
+                    Foreground="Black" />
+                
+                <DataGridTextColumn 
+                    Header="Цена"
+                    Width="50" 
+                    Binding="{Binding price}"/>
+                <DataGridTextColumn 
+                    Header="Дата выхода"
+                    Width="100" 
+                    Binding="{Binding releaseDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="ListFriend" 
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="Bisque" 
+                  Margin="0,0,0,-105">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Друзья"
+                    Width="100" 
+                    Binding="{Binding Друг}" Foreground="Black" />
+                <DataGridTextColumn 
+                    Header="Общие игры"
+                    Width="150" 
+                    Binding="{Binding Игра}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

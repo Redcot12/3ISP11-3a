@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a1a862a8ceaa48bdb12c9aea5cc97ac7" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ageLimit" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.balance" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.category" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.categoryGame" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.chatMessage" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.operationBalance" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.parentControl" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.region" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.relationship" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.roomChat" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.statusGame" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.statusRelationship" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.timePlayed" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userGame" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userRoomChat" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userLab" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.wallet" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_game_ageLimit" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_balance_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_operationBalance_balance" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_categoryGame_category" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_categoryGame_game" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_chatMessage_userRoomChat" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_userGame_game" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_parentControl_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_parentControl_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_user_region" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_relationship_statusRelationship" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_relationship_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_relationship_user1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_userRoomChat_roomChat" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_userGame_statusGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_timePlayed_userGame" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_userGame_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_userRoomChat_user" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
